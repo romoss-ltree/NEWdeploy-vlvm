@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ray
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ray
+  template:
+    metadata:
+      labels:
+        app: ray
+    spec:
+      containers:
+      - image: okteto.dev/ray:latest
+        name: ray
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: ProxySite
+          value: ""
+        - name: Vless_UUID
+          value: "273d7707-9bb1-44ff-b24c-b59876344cac"
+        - name: Vless_Path
+          value: "/s233"
+        - name: Vmess_UUID
+          value: "273d7707-9bb1-44ff-b24c-b59876344cac"
+        - name: Vmess_Path
+          value: "/s244"
+        - name: Share_Path
+          value: "/share233"
